@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"thread": "cpp",
+		"compare": "c",
+		"nx_stm32_eth_driver.h": "c"
+	}
+}
