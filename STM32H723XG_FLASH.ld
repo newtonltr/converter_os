@@ -214,7 +214,7 @@ SECTIONS
     __TxDescripSection_End = .;
   } >RAM_D2
 
-  .NetXPoolSection 0x30001000:
+  .NetXPoolSection 0x30000100:
   {
     . = ALIGN(4);  /* 对齐到 4 字节边界 */
     __NetXPoolSection_start = .;  /* 定义全局符号，表示段的起始地址 */

@@ -31,15 +31,17 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "tx_api.h"
-#include "nx_api.h"
 #include <math.h>
 #include <string.h>
-
+#include "eth.h"
+#include "tx_api.h"
+#include "nx_api.h"
+#include "tx_thread.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+extern ETH_HandleTypeDef heth;
 
 /* USER CODE END ET */
 
