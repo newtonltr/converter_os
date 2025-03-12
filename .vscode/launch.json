@@ -27,6 +27,11 @@
             "serverArgs": [
                 "-m","0",
             ],
+            // LiveWatch配置
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
             //"preLaunchTask": "Build + Flash"
             /* If you use external loader, add additional arguments */
             //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
@@ -54,6 +59,11 @@
             "serverArgs": [
                 "-m","0",
             ],
+            // LiveWatch配置
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 10
+            },
             /* If you use external loader, add additional arguments */
             //"serverArgs": ["--extload", "path/to/ext/loader.stldr"],
         }
