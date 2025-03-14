@@ -26,7 +26,7 @@ ULONG  arp_space_area[52*20 / sizeof(ULONG)] __attribute__((section(".NetXPoolSe
 #define IP_ADDR0                        192
 #define IP_ADDR1                        168
 #define IP_ADDR2                        0
-#define IP_ADDR3                        135
+#define IP_ADDR3                        200
 
 #define  THREAD_NETX_IP0_PRIO0                          2u
 #define  THREAD_NETX_IP0_STK_SIZE                     	1024*16u
@@ -60,6 +60,8 @@ void  tx_application_define(void *first_unused_memory)
 	ULONG gateway_ip = IP_ADDRESS(IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
 	gateway_ip = (gateway_ip & 0xFFFFFF00) | 0x01;
 	nx_ip_gateway_address_set(&ip_0, gateway_ip);
+
+	sleep_ms(300);
 
 	tx_thread_create(&thread_init_block, 
 		"tx_init", 
