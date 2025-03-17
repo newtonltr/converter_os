@@ -10,16 +10,29 @@ NX_TCP_SOCKET tcp_socket;
 #define MAX_MESSAGE_SIZE 256
 static char message_buffer[MAX_MESSAGE_SIZE];
 
-// 发送带时间戳的消息
+// 发送带时间戳、IP地址和端口号的消息
 UINT send_message_with_timestamp(const char* message)
 {
     NX_PACKET *packet_ptr;
     UINT status;
     char timestamp_message[MAX_MESSAGE_SIZE];
     ULONG current_time = HAL_GetTick(); // 获取HAL时间戳
+    ULONG ip_address = ip0_address;
+    UINT port;
     
-    // 格式化消息，添加时间戳
-    snprintf(timestamp_message, MAX_MESSAGE_SIZE, "[%lu ms] %s", current_time, message);
+    // 获取当前IP地址和端口号
+    nx_ip_address_get(&ip_0, &ip_address, NULL);
+    port = TCP_SERVER_PORT;
+    
+    // 格式化消息，添加时间戳、IP地址和端口号
+    snprintf(timestamp_message, MAX_MESSAGE_SIZE, "[%lu ms][%lu.%lu.%lu.%lu:%d] %s", 
+             current_time, 
+             (ip_address >> 24) & 0xFF,
+             (ip_address >> 16) & 0xFF,
+             (ip_address >> 8) & 0xFF,
+             ip_address & 0xFF,
+             port,
+             message);
     
     // 分配数据包
     status = nx_packet_allocate(&pool_0, &packet_ptr, NX_TCP_PACKET, NX_WAIT_FOREVER);
