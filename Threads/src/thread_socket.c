@@ -113,63 +113,6 @@ void thread_socket_entry(ULONG thread_input)
                 nx_tcp_server_socket_relisten(&ip_0, TCP_SERVER_PORT, &tcp_socket);
                 break;
             }
-        }
-        
-
+        }  
     }
-    // 主循环
-    // while (1)
-    // {
-    //     // 接收数据包
-    //     status = nx_tcp_socket_receive(&tcp_socket, &receive_packet, NX_WAIT_FOREVER);
-    //     if (status == NX_SUCCESS)
-    //     {
-    //         // 读取数据包内容
-    //         status = nx_packet_data_retrieve(receive_packet, message_buffer, &bytes_read);
-    //         if (status == NX_SUCCESS && bytes_read > 0)
-    //         {
-    //             // 确保字符串以null结尾
-    //             message_buffer[bytes_read < MAX_MESSAGE_SIZE ? bytes_read : MAX_MESSAGE_SIZE - 1] = '\0';
-                
-    //             // 添加时间戳并回显收到的消息
-    //             send_message_with_timestamp(message_buffer);
-    //         }
-            
-    //         // 释放数据包
-    //         nx_packet_release(receive_packet);
-    //     }
-    //     else
-    //     {
-    //         // 检查套接字状态
-    //         ULONG tcp_packets_sent, tcp_bytes_sent;
-    //         ULONG tcp_packets_received, tcp_bytes_received;
-    //         ULONG tcp_retransmit_packets, tcp_retransmit_bytes;
-    //         ULONG tcp_socket_state, tcp_transmit_queue_depth;
-    //         ULONG tcp_receive_window, tcp_transmit_window;
-    //         ULONG tcp_window_size;
-            
-    //         // 获取套接字信息
-    //         nx_tcp_socket_info_get(&tcp_socket, 
-    //                               &tcp_packets_sent, &tcp_bytes_sent,
-    //                               &tcp_packets_received, &tcp_bytes_received,
-    //                               &tcp_retransmit_packets, &tcp_retransmit_bytes,
-    //                               &tcp_socket_state, &tcp_transmit_queue_depth,
-    //                               &tcp_transmit_window, &tcp_receive_window,
-    //                               &tcp_window_size);
-            
-    //         // 如果连接断开，重新等待连接
-    //         if (tcp_socket_state != NX_TCP_ESTABLISHED)
-    //         {
-    //             // 断开当前连接
-    //             nx_tcp_socket_disconnect(&tcp_socket, NX_WAIT_FOREVER);
-    //             nx_tcp_server_socket_unaccept(&tcp_socket);
-                
-    //             status = nx_tcp_server_socket_accept(&tcp_socket, NX_WAIT_FOREVER);
-    //             if (status == NX_SUCCESS)
-    //             {
-    //                 send_message_with_timestamp("new client connected");
-    //             }
-    //         }
-    //     }
-    // }
 }
