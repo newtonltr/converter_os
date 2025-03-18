@@ -66,7 +66,7 @@ RAM (xrw)      : ORIGIN = 0x24000000, LENGTH = 128K
 RAM_D2 (xrw)      : ORIGIN = 0x30000000, LENGTH = 32K
 RAM_D3 (xrw)      : ORIGIN = 0x38000000, LENGTH = 16K
 ITCMRAM (xrw)      : ORIGIN = 0x00000000, LENGTH = 64K
-FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 1024K
+FLASH (rx)      : ORIGIN = 0x8040000, LENGTH = 768K
 }
 
 /* Define output sections */
@@ -196,7 +196,7 @@ SECTIONS
     . = ALIGN(8);
   } >DTCMRAM
 
-  .RxDescripSection 0x30000000:
+  .RxDescripSection 0x30000000 (NOLOAD):
   {
     . = ALIGN(4);
     __RxDescripSection_Start = .;
@@ -205,7 +205,7 @@ SECTIONS
     __RxDescripSection_End = .;
   } >RAM_D2
 
-  .TxDescripSection 0x30000080:
+  .TxDescripSection 0x30000080 (NOLOAD):
   {
     . = ALIGN(4);
     __TxDescripSection_Start = .;
@@ -214,7 +214,7 @@ SECTIONS
     __TxDescripSection_End = .;
   } >RAM_D2
 
-  .NetXPoolSection 0x30000100:
+  .NetXPoolSection 0x30000100 (NOLOAD):
   {
     . = ALIGN(4);  /* 对齐到 4 字节边界 */
     __NetXPoolSection_start = .;  /* 定义全局符号，表示段的起始地址 */
